@@ -1,0 +1,196 @@
+'use strict';
+
+const functions = require('firebase-functions');
+const {google} = require('googleapis');
+const {WebhookClient} = require('dialogflow-fulfillment');
+
+const VITAMIN_INTENT = 'Vitamin';
+const VITAMINS_ENTITY = 'Vitamins';
+const Minerals_INTENT ='Mineral';
+const Minerals_ENTITY ='Minerals';
+const Diet_For_Me_INTENT = 'DietForMe'; 
+const DietForMeFollowUp_INTENT = 'DietForMe2';
+const Diet_Plan_ENTITY = 'Diet_Plan';
+const Disease_INTENTS = 'Disease';
+const Diseases_ENTITY = 'Diseases';
+
+ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => 
+    {
+    const agent = new WebhookClient({ request, response });
+      function function1 (agent) 
+    {
+    const vitamin_type = agent.parameters[VITAMINS_ENTITY];
+    if (vitamin_type == 'Vitamin A') 
+    {
+        agent.add("Deficiency: One may notice difficulty seeing in dim light and rough/dry skin. \n Toxicity: Hypervitaminosis A is caused by consuming excessive amounts of preformed vitamin A, not the plant carotenoids. Preformed vitamin A is rapidly absorbed and slowly cleared from the body. Nausea, headache, fatigue, loss of appetite, dizziness, and dry skin can result. Excess intake while pregnant can cause birth defects. \n Sources: Carrots, sweet potato, pumpkin, green leafy vegetables, squash, cantaloupe, bell pepper, Chinese cabbage, beef, eggs, peaches");
+    } 
+     else if (vitamin_type == 'Vitamin B') 
+    {
+        agent.add("Vitamin B is made up of eight chemically distinct vitamins that once were thought to be one vitamin. It is known as vitamin B-complex. Different B vitamins come from different food sources. Feel free to ask more about specific Vitamin B types. There is Vitamin B1, Vitamin B2, Vitamin B3, Vitamin B5, Vitamin B6, Vitamin B7, Vitamin B9 and Vitamin B12.");
+       
+    } 
+    else if (vitamin_type == 'Vitamin B1') 
+    {
+        agent.add("Deficiency: Symptoms include burning feet, weakness in extremities, rapid heart rate, swelling, anorexia, nausea, fatigue, and gastrointestinal problems. \n Toxicity: None known. \n Sources: Sunflower seeds, asparagus, lettuce, mushrooms, black beans, navy beans, lentils, spinach, peas, pinto beans, lima beans, eggplant, Brussels sprouts, tomatoes, tuna, whole wheat, soybeans");
+    } 
+    else if (vitamin_type == 'Vitamin B2') 
+    {
+        agent.add("Deficiency: Symptoms include cracks, fissures and sores at corner of mouth and lips, dermatitis, conjunctivitis, photophobia, glossitis of tongue, anxiety, loss of appetite, and fatigue. \n Toxicity: Excess riboflavin may increase the risk of DNA strand breaks in the presence of chromium. High-dose riboflavin therapy will intensify urine color to a bright yellow (flavinuria) – but this is harmless. \n Sources: Almonds, soybeans/tempeh, mushrooms, spinach, whole wheat, yogurt, mackerel, eggs, liver");
+    } 
+    else if (vitamin_type == 'Vitamin B3') 
+    {
+        agent.add("Deficiency: Symptoms include dermatitis, diarrhea, dementia, and stomatitis. \n Toxicity: Niacin from foods is not known to cause adverse effects. Supplemental nicotinic acid may cause flushing of skin, itching, impaired glucose tolerance and gastrointestinal upset. Intake of 750 mg per day for less than 3 months can cause liver cell damage. High dose nicotinamide can cause nausea and liver toxicity. \n Sources: Mushrooms, asparagus, peanuts, brown rice, corn, green leafy vegetables, sweet potato, potato, lentil, barley, carrots, almonds, celery, turnips, peaches, chicken meat, tuna, salmon");
+    } 
+    else if (vitamin_type == 'Vitamin B5') 
+    {
+        agent.add("Deficiency: Very unlikely. Only in severe malnutrition may one notice tingling of feet. \n Toxicity: Nausea, heartburn and diarrhea may be noticed with high dose supplements. \n Sources: Broccoli, lentils, split peas, avocado, whole wheat, mushrooms, sweet potato, sunflower seeds, cauliflower, green leafy vegetables, eggs, squash, strawberries, liver");
+    } 
+    else if (vitamin_type == 'Vitamin B6') 
+    {
+        agent.add("Deficiency: Symptoms include chelosis, glossitis, stomatitis, dermatitis (all similar to vitamin B2 deficiency), nervous system disorders, sleeplessness, confusion, nervousness, depression, irritability, interference with nerves that supply muscles and difficulties in movement of these muscles, and anemia. Prenatal deprivation results in mental retardation and blood disorders for the newborn. \n Toxicity: High doses of supplemental vitamin B6 may result in painful neurological symptoms. \n Sources: Whole wheat, brown rice, green leafy vegetables, sunflower seeds, potato, garbanzo beans, banana, trout, spinach, tomatoes, avocado, walnuts, peanut butter, tuna, salmon, lima beans, bell peppers, chicken meat");
+    } 
+    else if (vitamin_type == 'Vitamin B7') 
+    {
+        agent.add("Deficiency: Very rare in humans. Keep in mind that consuming raw egg whites over a long period of time can cause biotin deficiency. Egg whites contain the protein avidin, which binds to biotin and prevents its absorption. \n Toxicity: Not known to be toxic. \n Sources: Green leafy vegetables, most nuts, whole grain breads, avocado, raspberries, cauliflower, carrots, papaya, banana, salmon, eggs");
+    } 
+    else if (vitamin_type == 'Vitamin B9') 
+    {
+        agent.add("Deficiency: One may notice anemia (macrocytic/megaloblastic), sprue, Leukopenia, thrombocytopenia, weakness, weight loss, cracking and redness of tongue and mouth, and diarrhea. In pregnancy there is a risk of low birth weight and preterm delivery. \n Toxicity: None from food. Keep in mind that vitamin B12 and folic acid deficiency can both result in megaloblastic anemia. Large doses of folic acid given to an individual with an undiagnosed vitamin B12 deficiency could correct megaloblastic anemia without correcting the underlying vitamin B12 deficiency. \n Sources: Green leafy vegetables, asparagus, broccoli, Brussels sprouts, citrus fruits, black eyed peas, spinach, great northern beans, whole grains, baked beans, green peas, avocado, peanuts, lettuce, tomato juice, banana, papaya, organ meats");
+    } 
+    else if (vitamin_type == 'Vitamin B12') 
+    {
+        agent.add("Deficiency: Symptoms include pernicious anemia, neurological problems and sprue. \n Toxicity: None known from supplements or food. Only a small amount is absorbed via the oral route, thus the potential for toxicity is low. \n Sources: Fortified cereals, liver, trout, salmon, tuna, haddock, egg");
+    } 
+    else if (vitamin_type == 'Vitamin C') 
+    {
+        agent.add("Deficiency: Symptoms include bruising, gum infections, lethargy, dental cavities, tissue swelling, dry hair and skin, bleeding gums, dry eyes, hair loss, joint paint, pitting edema, anemia, delayed wound healing, and bone fragility. Long-term deficiency results in scurvy. \n Toxicity: Possible problems with very large vitamin C doses including kidney stones, rebound scurvy, increased oxidative stress, excess iron absorption, vitamin B12 deficiency, and erosion of dental enamel. Up to 10 grams/day is safe based on most data. 2 grams or more per day can cause diarrhea. \n Sources: Guava, bell pepper, kiwi, orange, grapefruit, strawberries, Brussels sprouts, cantaloupe, papaya, broccoli, sweet potato, pineapple, cauliflower, kale, lemon juice, parsley.");
+    } 
+    else if (vitamin_type == 'Vitamin D') 
+    {
+        agent.add("Deficiency: In children a vitamin D deficiency can result in rickets, deformed bones, retarded growth, and soft teeth. In adults a vitamin D deficiency can result in osteomalacia, softened bones, spontaneous fractures, and tooth decay. Those at risk for deficiency include infants, elderly, dark skinned individuals, those with minimal sun exposure, fat malabsorption syndromes, inflammatory bowel diseases, kidney failure, and seizure disorders. \n Toxicity: Hypervitaminosis D is not a result of sun exposure but from chronic supplementation. Excessive supplement use will elevate blood calcium levels and cause loss of appetite, nausea, vomiting, excessive thirst, excessive urination, itching, muscle weakness, joint pain and disorientation. Calcification of soft tissues can also occur. \n Sources: Sunlight, fortified foods, mushrooms, salmon, mackerel, sardines, tuna, eggs");
+    } 
+    else if (vitamin_type == 'Vitamin E') 
+    {
+        agent.add("Deficiency: Only noticed in those with severe malnutrition. However, suboptimal intake of vitamin E is relatively common. \n Toxicity: Minimal side effects have been noted in adults taking supplements in doses less than 2000 mg/day. There is a potential for impaired blood clotting. Infants are more vulnerable. \n Sources: Green leafy vegetables, almonds, sunflower seeds, olives, blueberries, most nuts, most seeds, tomatoes, avocado");
+    } 
+    else if (vitamin_type == 'Vitamin K') 
+    {
+        agent.add("Deficiency: Tendency to bleed or hemorrhage and anemia. \n Toxicity: May interfere with glutathione. No known toxicity with high doses. \n Sources: Broccoli, green leafy vegetables, parsley, watercress, asparagus, Brussels sprouts, green beans, green peas, carrots");
+    } 
+    }
+    
+    
+    
+    function function2(agent) 
+    {
+    const mineral_type = agent.parameters[Minerals_ENTITY];
+    if(mineral_type == "Calcium")
+    {
+         agent.add("Deficiency: Long-term inadequate intake can result in low bone mineral density, rickets, osteomalacia and osteoporosis. \n Toxicity: Will cause nausea, vomiting, constipation, dry mouth, thirst, increased urination, kidney stones and soft tissue calcification. \n Sources: Green leafy vegetables, legumes, tofu, molasses, sardines, okra, perch, trout, Chinese cabbage, rhubarb, sesame seeds");
+    }
+    else if(mineral_type == "Phosphorus")
+    {
+        agent.add("Deficiency: Very rare. Those at risk include premature infants, those who use antacids, alcoholics, uncontrolled diabetes mellitus and refeeding syndrome. \n Toxicity: Very rare. May result in soft tissue calcification. \n Sources: Legumes, nuts, seeds, whole grains, eggs, fish, buckwheat, seafood, corn, wild rice");
+    }
+    else if(mineral_type == "Potassium")
+    {
+        agent.add("Deficiency: Not a result of insufficient dietary intake. Caused by protein wasting conditions. Diuretics can also cause excessive loss of potassium in the urine. Low blood potassium can result in cardiac arrest. \n Toxicity: Occurs when the intake of potassium exceeds the kidneys capacity for elimination. Found with kidney failure and potassium sparing diuretics. Oral doses greater than 18 grams can lead to toxicity. Symptoms include tingling of extremities and muscle weakness. High dose potassium supplements may cause nausea, vomiting and diarrhea. \n Sources: Sweet potato, tomato, green leafy vegetables, carrots, prunes, beans, molasses, squash, fish, bananas, peaches, apricots, melon, potatoes, dates, raisins, mushrooms");
+    }
+    else if(mineral_type == "Mangnesium") 
+    { 
+        agent.add("Deficiency: Very rare due to abundance of magnesium in foods. Those with gastrointestinal disorders, kidney disorders, and alcoholism are at risk. \n Toxicity: None identified from foods. Excessive consumption of magnesium containing supplements may result in diarrhea (magnesium is a known laxative), impaired kidney function, low blood pressure, muscle weakness, and cardiac arrest. \n Sources: Legumes, nuts, seeds, whole grains, fruits, avocado");
+    }
+    else if(mineral_type == "Salt") 
+    { 
+        agent.add("Deficiency: Does not result from low dietary intake. Low blood sodium typically results from increased fluid retention. One may notice nausea, vomiting, headache, cramps, fatigue, and disorientation. \n Toxicity: Excessive intake can lean to increased fluid volume, nausea, vomiting, diarrhea and abdominal cramps. High blood sodium usually results from excessive water loss. \n Sources: Any processed foods, whole grains, legumes, nuts, seeds, vegetables");
+    }
+    else if(mineral_type == "Iron") 
+    { 
+        agent.add("Deficiency: Anemia with small and pale red blood cells. In children it is associated with behavioral abnormalities. \n Toxicity: Common cause of poisoning in children. May increase the risk of chronic disease. Excessive intake of supplemental iron is an emergency room situation. Cardiovascular disease, cancer, and neurodegenerative diseases are associated with iron excess. \n Sources: Almonds, apricots, baked beans, dates, lima beans, kidney beans, raisins, brown rice, green leafy vegetables, broccoli, pumpkin seeds, tuna, flounder, chicken meat, pork");
+    }
+    else if(mineral_type == "Zinc") 
+    { 
+        agent.add("Deficiency: Symptoms include growth retardation, lowered immune statue, skeletal abnormalities, delay in sexual maturation, poor wound healing, taste changes, night blindness and hair loss. Those at risk for deficiency include the elderly, alcoholics, those with malabsorption, vegans, and those with severe diarrhea. \n Toxicity: Symptoms that result are abdominal pain, diarrhea, nausea, and vomiting. Long-term consumption of excessive zinc can result in copper deficiency. \n Sources: Mushrooms, spinach, sesame seeds, pumpkin seeds, green peas, baked beans, cashews, peas, whole grains, flounder, oats, oysters, chicken meat");
+    }
+    else if(mineral_type == "Copper") 
+    { 
+        agent.add("Deficiency: Relatively uncommon. Clinical sign is hypochromic anemia unresponsive to iron therapy. Neutropenia and leucopenia may also result. Hypopigmentation of skin and hair is also noticed. Those at risk for deficiency include premature infants, infants fed only cow’s milk formula, those with malabsorption syndromes, excessive zinc consumption and antacid use. \n Toxicity: Rare. Symptoms include abdominal pain, nausea, vomiting, and diarrhea. Long-term exposure to lower doses of copper can result in liver damage. \n Sources: Mushrooms, green leafy vegetables, barley, soybeans, tempeh, sunflower seeds, navy beans, garbanzo beans, cashews, molasses, liver");
+    }
+    else if(mineral_type == "Chromium") 
+    { 
+        agent.add("Deficiency: Symptoms include impaired glucose tolerance and elevated circulating insulin \n Toxicity: Generally limited to industrial exposure. Long-term supplement use may increase DNA damage. Rare cases of kidney failure have also been documented. \n Sources: Lettuce, onions, tomatoes, whole grains, potatoes, mushrooms, oats, prunes, nuts, brewer’s yeast");
+    }
+    else if(mineral_type == "Selenium") 
+    { 
+        agent.add("Deficiency: Can cause limited glutathione activity. More severe symptoms are juvenile cardiomyopathy and chondrodystrophy. \n Toxicity: Multiple symptoms including dermatologic lesions, hair and nail brittleness, gastrointestinal disturbances, skin rash, fatigue, and nervous system abnormalities. \n Sources: Brazil nuts, mushrooms, barley, salmon, whole grains, walnuts, eggs");
+    }
+    else if(mineral_type == "Fluoride") 
+    { 
+        agent.add("Deficiency: Increased risk of dental caries. \n Toxicity: Children can develop mottled tooth enamel. Swallowing toothpaste with fluoride is typically the cause of this problem. Symptoms include nausea, abdominal pain, and vomiting. \n Sources: Water, tea, fish");
+    }
+    else if(mineral_type == "Iodine") 
+    { 
+        agent.add("Deficiency: Impairs growth and neurological development. Deficiency can also result in ; decreased production of thyroid hormones and hypertrophy of the thyroid. \n Toxicity: Rare and occurs in doses of many grams. Symptoms include burning mouth, throat and stomach. Fever and diarrhea can also result. \n Sources: Sea vegetables, iodized salt, eggs, strawberries, asparagus, green leafy vegetables");
+    }
+    else if(mineral_type == "Managanese") 
+    { 
+        agent.add("Deficiency: Not typically observed in humans. \n Toxicity: Generally from industrial exposure. \n Sources: Green leafy vegetables, berries, pineapple, lettuce, tempeh, oats, soybeans, spelt, brown rice, garbanzo beans");
+    }
+    else if(mineral_type == "Molybdenum") 
+    { 
+        agent.add("Deficiency: Never been observed in healthy people. \n Toxicity: More likely than deficiency. Still very rare. \n Sources: Legumes, whole grains");
+    }
+    }
+    
+    function function3(agent) 
+    {
+    const bmi_type = agent.parameters[Diet_Plan_ENTITY];
+    if(bmi_type == "Underweight")
+    {
+         agent.add("If you're underweight, with a BMI of 18.5 or lower, you may be more susceptible to illness and take longer to recover. A low BMI may also increase risk of respiratory and digestive problems, cancer and osteoporosis. Eating more calories than your body needs increases your weight, which, in turn, increases your BMI. While you technically can get your extra calories from any food, your best bet is to stick with a variety of nutrient-rich whole foods while you work on raising your BMI. Foods that rich in nutrients and high in calories include brown rice, granola, raisin bran cereals, bananas, dried apricots, avocados, sweet potatoes, peas, yogurt, milk, and fatty fish such as salmon and tuna, tofu, beans, lean red meat, nuts and seeds.");
+    }
+    else if(bmi_type == "Normal") 
+    { 
+         agent.add("According to the Dietary Guidelines for Americans 2015-2020, a healthy eating plan: Emphasizes fruits, vegetables, whole grains, and fat-free or low-fat milk and milk products. Includes lean meats, poultry, fish, beans, eggs, and nuts. Is low in saturated fats, trans fats, cholesterol, salt (sodium), and added sugars. Stays within your daily calorie needs");
+    }
+    else if(bmi_type == "Overweight") 
+    { 
+         agent.add("Your BMI results stated that you're overweight. It's nothing to be proud of, but atleast you're not obese, which is again, not a bad thing either. And we can definitely work on your scores. The low fat diet is an excellent basis for a weight loss program. Fats are high in calories, and the low fat diet is essentially if you want to lose weight. You should eat less meat.  Select very lean cuts of meat. Trim skin off chicken and turkey. You should eat no more than two whole eggs (yolks and whites) per week. Avoid frozen, canned, and dehydrated main-dish foods such as pizza, TV dinners, spaghetti, chili, stews, and soups.");
+    }
+    else if(bmi_type == "Obese") 
+    { 
+         agent.add("Your BMI results show that you need to work on your score. The most established way for an obese person to lose weight is by focusing on diet and cutting calories. According to the National Heart, Lung and Blood Institute, you should cut your caloric intake by about 500 to 1,000 calories a day to lose one to two pounds a week. A healthy low-calorie diet plan avoids saturated and trans fats, cholesterol, too much sodium and added sugars. It includes low-fat dairy products; lean proteins, such as fish, poultry and beans; whole grains; and fruits and vegetables.");
+    }
+    }
+   
+   function function4(agent) 
+    {
+    const disease_type = agent.parameters[Diseases_ENTITY];
+    if(disease_type == "Dysentery")
+    {
+         agent.add("Suggested Diet: Bland foods such as hot cereals, such as oatmeal, or rice porridge, bananas, plain white rice, bread or toast, boiled potatoes. Foods to avoid: Spicy foods, fried foods, Sugary foods and artificial sweeteners, onion and garlic, most processed, packaged food, raw vegetables.");
+    }
+    else if(disease_type == "Malaria") 
+    { 
+         agent.add("High fibre foods like whole grain cereals must be avoided by malaria patients. Instead, the intake of fruits and pulses should be increased as they provide adequate nutrition. Eating fried and processed foods, junk oily and spicy foods can aggravate nausea and can disturb the digestion process in the body. They may also lead to diarrhoea. Consumption of caffeine in the form of tea, coffee, cocoa etc must also be avoided. ");
+    }
+    else if(disease_type == "Dengue") 
+    { 
+         agent.add("Dairy products, eggs, chicken, and fish are highly recommended foods for dengue patients to combat the dengue virus. Proteins should be included in the diet once the fever subsides slowly as protein rich diet helps in quick recovery and helps regaining the lost nutrients essential for body.");
+    }
+    else if(disease_type == "Constipation") 
+    { 
+         agent.add("Good sources of fiber are - whole grains, such as whole wheat bread and pasta, oatmeal, and bran flake cereals, legumes, such as lentils, black beans, kidney beans, soybeans, and chickpeas, fruits, such as berries, apples with the skin on, oranges, and pears, vegetables, such as carrots, broccoli, green peas, and collard greens, nuts, such as almonds, peanuts, and pecans");
+    }
+    }
+    
+    
+let intentMap = new Map();
+intentMap.set('Vitamin',function1);
+intentMap.set('Mineral',function2);
+intentMap.set('DietForMe2', function3);    
+intentMap.set('Disease', function4);
+agent.handleRequest(intentMap);
+
+ });
+   
